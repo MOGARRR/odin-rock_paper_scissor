@@ -8,11 +8,25 @@ it will need a random option from the computer and the input from the..
 display the results 
 */ 
 
-// 1- rock 2-paper 3-scissors
-
 // function that will make the computers random choice
-let computerChoice = Math.floor(Math.random() * 3) + 1;
-console.log(`comp pick was ${computerChoice}`);
+
+let computerNum = Math.floor(Math.random() * 3) + 1;
+console.log(`comp pick was ${computerNum}`);
+switch (computerNum){
+    case 1:
+        computerChoice = "ROCK";
+        break;
+    
+    case 2:
+        computerChoice = "PAPER"
+        break;
+
+    case 3:
+        computerChoice = "SCISSORS"
+        break;
+}
+
+console.log(`comp choice was ${computerChoice}`);
 
 // variable that will get the users choice ( make it case insensitive)
 let playerChoice = prompt("Rock, Paper, or scissors?");
