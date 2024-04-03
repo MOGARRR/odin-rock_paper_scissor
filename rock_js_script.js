@@ -8,30 +8,45 @@ it will need a random option from the computer and the input from the..
 display the results 
 */ 
 
-// function that will make the computers random choice
+// function that will make the computers random choice and switch case to convert it to strings
 
-let computerNum = Math.floor(Math.random() * 3) + 1;
-console.log(`comp pick was ${computerNum}`);
-switch (computerNum){
-    case 1:
-        computerChoice = "ROCK";
-        break;
-    
-    case 2:
-        computerChoice = "PAPER"
-        break;
 
-    case 3:
-        computerChoice = "SCISSORS"
-        break;
+function getComputerSelection(){
+    let computerNum = Math.floor(Math.random() * 3) + 1;
+    if(computerNum === 1){
+        return "ROCK"
+    } else if(computerNum === 2){
+        return "PAPER"
+    } else if(computerNum === 3){
+        return "SCISSORS"
+    }
 }
-
-console.log(`comp choice was ${computerChoice}`);
-
-// variable that will get the users choice ( make it case insensitive)
-let playerChoice = prompt("Rock, Paper, or scissors?");
-console.log(`player pick was ${playerChoice.toUpperCase()}`);
-
 // function that plays a single round that uses the computer/user choices as parameters
 
+
+function playRound (computerChoice,playerChoice){
+
+     if(playerChoice === computerChoice){
+        return console.log(`Its a tie!`)
+
+    } else if(playerChoice === "ROCK" && computerChoice === "SCISSORS"){
+        return console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+
+    } else if(playerChoice === "PAPER" && computerChoice ==="ROCK"){
+        return console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+
+    }else if(playerChoice === "SCISSORS" && computerChoice ==="PAPER"){
+        return console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+    } else{
+        return console.log(`You lost! ${computerChoice} beats ${playerChoice}`);
+    }
+}
+
+let playerChoice = prompt("Rock Paper or Scissors?").toUpperCase();
+console.log(`users choice was ${playerChoice}`);
+
+let computerChoice = getComputerSelection();
+console.log(`comps choice was ${computerChoice}`);
+
+console.log(playRound(computerChoice,playerChoice));
 // function that uses and loops five rounds of rock paper scissor
