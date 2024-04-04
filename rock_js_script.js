@@ -41,12 +41,17 @@ function playRound (computerChoice,playerChoice){
         return console.log(`You lost! ${computerChoice} beats ${playerChoice}`);
     }
 }
-
-let playerChoice = prompt("Rock Paper or Scissors?").toUpperCase();
-console.log(`users choice was ${playerChoice}`);
-
-let computerChoice = getComputerSelection();
-console.log(`comps choice was ${computerChoice}`);
-
-console.log(playRound(computerChoice,playerChoice));
 // function that uses and loops five rounds of rock paper scissor
+function playGame(){
+    for (i = 0; i < 5; i++){
+
+        let playerChoice = prompt("Rock Paper or Scissors?").toUpperCase();
+        console.log(`users choice was ${playerChoice}`);
+
+        let computerChoice = getComputerSelection();
+        console.log(`comps choice was ${computerChoice}`);
+        
+        console.log(playRound(computerChoice,playerChoice));
+    }
+}
+playGame();
