@@ -8,6 +8,7 @@ it will need a random option from the computer and the input from the..
 display the results 
 */ 
 
+let keepScore = 0; 
 // function that will make the computers random choice and switch case to convert it to strings
 
 
@@ -27,19 +28,22 @@ function getComputerSelection(){
 function playRound (computerChoice,playerChoice){
 
      if(playerChoice === computerChoice){
-        return console.log(`Its a tie!`)
+        console.log(`Its a tie!`)
 
     } else if(playerChoice === "ROCK" && computerChoice === "SCISSORS"){
-        return console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
-
+        console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+        keepScore++;
     } else if(playerChoice === "PAPER" && computerChoice ==="ROCK"){
-        return console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
-
+        console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+        keepScore++;
     }else if(playerChoice === "SCISSORS" && computerChoice ==="PAPER"){
-        return console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+        console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
+        keepScore++;
     } else{
-        return console.log(`You lost! ${computerChoice} beats ${playerChoice}`);
+        console.log(`You lost! ${computerChoice} beats ${playerChoice}`);
     }
+    
+    return keepScore;
 }
 // function that uses and loops five rounds of rock paper scissor
 function playGame(){
@@ -52,6 +56,12 @@ function playGame(){
         console.log(`comps choice was ${computerChoice}`);
         
         console.log(playRound(computerChoice,playerChoice));
+        
+    }
+    if( i === 5 && keepScore >= 3){
+        return console.log(`You won ${keepScore}/5 games! You're the winner!`)
+    }else if(i === 5 && keepScore < 3){
+        return console.log(`You won ${keepScore}/5 games! The computer is the winner!`)
     }
 }
 playGame();
