@@ -1,9 +1,5 @@
-let ROCK = document.querySelector('#rock');
-let PAPER = document.querySelector('#paper');
-let SCISSORS = document.querySelector('#scissors');
-
-let buttons =[ROCK,PAPER,SCISSORS];
-
+let buttons = document.querySelectorAll('button');
+Array.from(buttons);
 let addScore = 0; 
 
 
@@ -17,10 +13,8 @@ function getComputerSelection(){
     } else if(computerNum === 3){
         return "SCISSORS";
     }
-}
+} 
 // runs a single round while keeping score. display current result of each game
-
-
 function playRound (computerChoice,playerChoice){
 
      if(playerChoice === computerChoice){
@@ -42,8 +36,11 @@ function playRound (computerChoice,playerChoice){
     return addScore;
 };
 
+
 buttons.forEach((button) =>{
     button.addEventListener('click', ()=>{
-        alert('it works!');
+    let computerChoice = getComputerSelection();
+    let playerChoice = button.id;
+    console.log(playRound(computerChoice,playerChoice));
     })
 })
