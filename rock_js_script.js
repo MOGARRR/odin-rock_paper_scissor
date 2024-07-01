@@ -1,5 +1,8 @@
+// Gets button nodelist and then turns it into an array for array methods
 let buttons = document.querySelectorAll('button');
 Array.from(buttons);
+
+let display = document.querySelector('#display');
 let addScore = 0; 
 
 
@@ -18,29 +21,29 @@ function getComputerSelection(){
 function playRound (computerChoice,playerChoice){
 
      if(playerChoice === computerChoice){
-        console.log(`Its a tie!`);
+        return`Its a tie!`;
 
     } else if(playerChoice === "ROCK" && computerChoice === "SCISSORS"){
-        console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
-        addScore++;
+        return`You win! ${playerChoice} beats ${computerChoice}!`;
+        //addScore++;
     } else if(playerChoice === "PAPER" && computerChoice ==="ROCK"){
-        console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
-        addScore++;
+        return`You win! ${playerChoice} beats ${computerChoice}!`;
+        //addScore++;
     }else if(playerChoice === "SCISSORS" && computerChoice ==="PAPER"){
-        console.log(`You win! ${playerChoice} beats ${computerChoice}!`);
-        addScore++;
+        return `You win! ${playerChoice} beats ${computerChoice}!`;
+        //addScore++;
     } else{
-        console.log(`You lost! ${computerChoice} beats ${playerChoice}`);
+        return `You lost! ${computerChoice} beats ${playerChoice}`;
     }
-    
-    return addScore;
 };
 
+let reset = () => display.removeChild(spanDisplay);
 
+// sets a event listener for each button in array
 buttons.forEach((button) =>{
     button.addEventListener('click', ()=>{
     let computerChoice = getComputerSelection();
     let playerChoice = button.id;
-    console.log(playRound(computerChoice,playerChoice));
-    })
-})
+    display.innerText =`You picked ${playerChoice} and the computer picked ${computerChoice}\n The results: ${playRound(computerChoice,playerChoice)}`;
+    });
+});
