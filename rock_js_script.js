@@ -21,29 +21,39 @@ function getComputerSelection(){
 function playRound (computerChoice,playerChoice){
 
      if(playerChoice === computerChoice){
-        return`Its a tie!`;
+        return[`Its a tie!`, addScore];
 
     } else if(playerChoice === "ROCK" && computerChoice === "SCISSORS"){
-        return`You win! ${playerChoice} beats ${computerChoice}!`;
-        //addScore++;
+        return [`You win! ${playerChoice} beats ${computerChoice}!`, addScore ++];
+        
     } else if(playerChoice === "PAPER" && computerChoice ==="ROCK"){
-        return`You win! ${playerChoice} beats ${computerChoice}!`;
-        //addScore++;
+        return[`You win! ${playerChoice} beats ${computerChoice}!`, addScore++];
+        
     }else if(playerChoice === "SCISSORS" && computerChoice ==="PAPER"){
-        return `You win! ${playerChoice} beats ${computerChoice}!`;
-        //addScore++;
+        return [`You win! ${playerChoice} beats ${computerChoice}!`, addScore ++];
+
     } else{
-        return `You lost! ${computerChoice} beats ${playerChoice}`;
+        return [`You lost! ${computerChoice} beats ${playerChoice}`, addScore];
     }
 };
 
-let reset = () => display.removeChild(spanDisplay);
+
 
 // sets a event listener for each button in array
 buttons.forEach((button) =>{
     button.addEventListener('click', ()=>{
     let computerChoice = getComputerSelection();
     let playerChoice = button.id;
-    display.innerText =`You picked ${playerChoice} and the computer picked ${computerChoice}\n The results: ${playRound(computerChoice,playerChoice)}`;
-    });
+    let result = playRound(computerChoice,playerChoice);
+    display.innerText =`You picked ${playerChoice} and the computer picked ${computerChoice}\n The results: ${result[0]}`;
+    
+    let scoreBoard = document.createElement('div');
+    if(addScore < 5){
+    scoreBoard.textContent = `Your current score is ${addScore}`;
+} else {
+    scoreBoard.textContent = `YOU WON! YOU GOT ${addScore} POINTS!!!`;
+}
+    display.appendChild(scoreBoard);
+
+});
 });
